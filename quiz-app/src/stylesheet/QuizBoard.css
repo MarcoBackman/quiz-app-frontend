@@ -1,0 +1,178 @@
+.quiz-board-container {
+    padding: 20px;
+    max-width: 900px; /* Adjust max-width as per your design */
+    margin: 20px auto;
+    background-color: #f9f9f9; /* Light background for the quiz board area */
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    min-height: 400px; /* Give it a minimum height even when empty */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center content vertically */
+    align-items: center; /* Center content horizontally */
+    text-align: center;
+}
+
+/* Progress bar styles */
+.quiz-progress-bar-container {
+    width: 60%;
+    align-items: center;
+    align-self: center;
+    justify-content: center;
+    background-color: #e0e0e0;
+    border-radius: 5px;
+    height: 10px;
+    overflow: hidden;
+}
+
+.quiz-progress-bar {
+    height: 100%;
+    background-color: #4CAF50; /* Green progress bar */
+    width: 0%; /* Initial width */
+    border-radius: 5px;
+    transition: width 0.3s ease-in-out;
+}
+
+/* Header for QuizBoard */
+.quiz-board-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+    width: 100%; /* Ensure header takes full width */
+}
+
+.quiz-board-header .question-counter {
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #555;
+}
+
+.quiz-board-header .exit-button {
+    background: none;
+    border: none;
+    color: #dc3545; /* Red color for exit */
+    font-size: 1em;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background-color 0.2s ease;
+}
+
+.quiz-board-header .exit-button:hover {
+    background-color: #f8d7da; /* Light red on hover */
+}
+
+/* Quiz Completion Message */
+.quiz-completion-message {
+    padding: 50px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    width: 80%; /* Adjust as needed */
+}
+
+.quiz-completion-message h2 {
+    color: #28a745;
+    margin-bottom: 20px;
+    font-size: 2em;
+}
+
+.quiz-completion-message p {
+    font-size: 1.1em;
+    color: #555;
+    margin-bottom: 25px;
+}
+
+.quiz-completion-message .btn {
+    padding: 12px 25px;
+    font-size: 1.1em;
+    border-radius: 8px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.quiz-completion-message .btn:hover {
+    background-color: #4CAF50;
+}
+
+.initial-quiz-message {
+    font-size: 1.5em;
+    color: #888;
+    margin: auto; /* Center the message vertically and horizontally */
+}
+
+@media (max-width: 768px) {
+    .quiz-board-container {
+        padding: 15px; /* Reduce padding on smaller screens */
+        margin: 10px; /* Reduce margin */
+        box-shadow: none; /* Remove shadow to feel less boxy on mobile */
+        border-radius: 0; /* Optional: make it full width without rounded corners */
+        min-height: calc(100vh - 20px); /* Fill most of the viewport height */
+        justify-content: flex-start; /* Align content to top */
+    }
+
+    .quiz-board-header {
+        flex-direction: column; /* Stack items vertically */
+        align-items: flex-start; /* Align items to the left */
+        gap: 10px; /* Space between stacked items */
+        margin-bottom: 15px;
+        padding-bottom: 10px;
+    }
+
+    .quiz-board-header .question-counter {
+        font-size: 1em; /* Slightly smaller font for counter */
+    }
+
+    .quiz-board-header .exit-button {
+        width: 150px;
+        text-align: center;
+        padding: 10px 0; /* Increase vertical padding */
+        font-size: 1em;
+    }
+
+    /* Adjust progress bar to be below header on mobile if desired, though current styling already makes it full width */
+    .quiz-progress-bar-container {
+        margin-top: 10px; /* Add some space above the progress bar */
+    }
+
+    .quiz-completion-message {
+        padding: 20px; /* Smaller padding */
+        width: 95%; /* Take more width */
+    }
+
+    .quiz-completion-message h2 {
+        font-size: 1.5em; /* Smaller heading */
+    }
+
+    .quiz-completion-message p {
+        font-size: 0.9em; /* Smaller paragraph text */
+    }
+
+    .quiz-completion-message .btn {
+        padding: 10px 20px; /* Smaller button padding */
+        font-size: 1em; /* Smaller button font */
+    }
+
+    .initial-quiz-message {
+        font-size: 1.2em; /* Smaller font for initial message */
+        padding: 20px; /* Add padding to make it look better */
+    }
+}
+
+@media (max-width: 480px) {
+    /* Further adjustments for very small phones */
+    .quiz-board-container {
+        padding: 10px;
+        margin: 5px;
+    }
+
+    .quiz-board-header .exit-button {
+        font-size: 0.9em;
+    }
+}

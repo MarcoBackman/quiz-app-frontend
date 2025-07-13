@@ -1,0 +1,240 @@
+.quiz-master-dashboard {
+    font-family: 'Arial', sans-serif;
+    background-color: #f5f7fa;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    font-size: 1.3em;
+    color: #333;
+}
+
+.logo-icon {
+    height: 30px;
+    margin-right: 10px;
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.notification-icon {
+    font-size: 1.5em;
+    cursor: pointer;
+    color: #555;
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+.main-content {
+    flex-grow: 1;
+    padding: 40px 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.page-title {
+    font-size: 2em;
+    color: #333;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    text-align: center;
+    color: #666;
+    margin-bottom: 40px;
+    font-size: 1.1em;
+}
+
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+    margin-bottom: 60px;
+}
+
+.quiz-statistics {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    padding: 30px 0;
+    text-align: center;
+    width: 90%;
+    margin: 4em auto;
+}
+
+.quiz-statistics h2 {
+    font-size: 1.8em;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+.stats-grid {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.stat-item {
+    flex: 1;
+    min-width: 180px; /* Adjust based on desired responsiveness */
+    max-width: 250px;
+    padding: 15px;
+    border-right: 1px solid #eee; /* Separator */
+}
+
+.stat-item:last-child {
+    border-right: none; /* No separator for the last item */
+}
+
+.stat-value {
+    font-size: 2.5em;
+    font-weight: bold;
+    color: #4CAF50; /* A nice green color for stats */
+    display: block;
+    margin-bottom: 5px;
+}
+
+.stat-label {
+    font-size: 0.9em;
+    color: #777;
+}
+
+.footer {
+    text-align: center;
+    padding: 20px;
+    color: #888;
+    font-size: 0.85em;
+    margin-top: 40px;
+    border-top: 1px solid #eee;
+}
+
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000; /* Above everything else */
+}
+
+.spinner {
+    border: 8px solid #f3f3f3; /* Light grey */
+    border-top: 8px solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 2s linear infinite;
+}
+
+.empty-quiz-board-placeholder {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 50px;
+    background-color: #f0f2f5;
+    border-radius: 12px;
+    text-align: center;
+    color: #666;
+    font-size: 1.2em;
+    border: 2px dashed #ccc;
+    min-height: 400px; /* Ensure it has some height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+
+@media (max-width: 1368px) {
+    .category-grid {
+        display: grid;
+        width: 90%;
+        margin: 0 auto;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 2fr));
+        gap: 15px;
+    }
+    .header, .main-content {
+        width: 98%;
+        padding: 0;
+    }
+
+    .stat-item:last-child {
+        border-bottom: none;
+    }
+}
+
+@media (max-width: 968px) {
+    .category-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+    .header, .main-content {
+        padding: 0;
+    }
+    .stat-item {
+        border-right: none; /* Remove separators on smaller screens */
+        border-bottom: 1px solid #eee;
+        margin-bottom: 20px;
+    }
+    .stat-item:last-child {
+        border-bottom: none;
+    }
+
+    .quiz-statistics {
+        width: 90%;
+        padding: 30px 0;
+        text-align: center;
+        margin: 4em auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .category-grid {
+        grid-template-columns: 1fr; /* Single column on very small screens */
+    }
+    .logo {
+        font-size: 1.1em;
+    }
+    .avatar {
+        width: 30px;
+        height: 30px;
+    }
+    .page-title {
+        font-size: 1.6em;
+    }
+    .subtitle {
+        font-size: 0.9em;
+    }
+    .stat-value {
+        font-size: 2em;
+    }
+
+    .quiz-statistics {
+        padding: 30px 0;
+        text-align: center;
+        margin: 4em auto;
+    }
+}
