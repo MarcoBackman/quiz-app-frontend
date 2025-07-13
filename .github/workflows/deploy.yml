@@ -8,6 +8,10 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write # Grant write permission for GITHUB_TOKEN to push content
+      pages: write    # Required for Pages deployments
+      id-token: write # Required for OIDC authentication by Pages
 
     steps:
       - name: Checkout repository
@@ -17,7 +21,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'npm' # Or 'yarn' if you use yarn
+          cache: 'npm'
           cache-dependency-path: 'quiz-app/package-lock.json'
 
       - name: Install dependencies
@@ -25,11 +29,20 @@ jobs:
         working-directory: ./quiz-app
 
       - name: Build Vue.js application
-        run: npm run build # Or 'yarn build'
-        working-directory: ./quiz-app # IMPORTANT: Run this command inside your Vue.js project directory
+        run: npm run build
+        working-directory: ./quiz-app
+
+      # Add this step to debug if the 'dist' directory is correctly created and populated
+      - name: Verify Build Output
+        run: |
+          echo "Listing contents of ./quiz-app/dist:"
+          ls -al ./quiz-app/dist
+          echo "Listing contents of ./quiz-app/dist/assets (if applicable):"
+          ls -al ./quiz-app/dist/assets || true # `|| true` prevents error if assets dir doesn't exist
+        working-directory: ./quiz-app # This is important to ensure paths are relative to the working dir
 
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4 # Action for deploying to gh-pages
+        uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./quiz-app/dist
