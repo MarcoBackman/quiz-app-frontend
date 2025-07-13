@@ -22,30 +22,29 @@ jobs:
         with:
           node-version: '20'
           cache: 'npm'
-          cache-dependency-path: 'quiz-app/package-lock.json' # Path relative to repo root
+          cache-dependency-path: 'quiz-app/package-lock.json'
 
       - name: Install dependencies
         run: npm install
-        working-directory: ./quiz-app # Run in the quiz-app subdirectory
+        working-directory: ./quiz-app
 
       - name: Build Vue.js application
         run: npm run build
-        working-directory: ./quiz-app # Run in the quiz-app subdirectory
+        working-directory: ./quiz-app
+        env: # <--- ADD THIS ENV BLOCK
+          VITE_API_BASE_URL: ${{ secrets.VITE_API_BASE_URL }} # Use the secret you defined
 
-      # Add this step to debug if the 'dist' directory is correctly created and populated
       - name: Verify Build Output
         run: |
           echo "Listing contents of ./quiz-app/dist (from repo root):"
-          ls -al ./quiz-app/dist # <--- Path relative to repo root
+          ls -al ./quiz-app/dist
           echo "Listing contents of ./quiz-app/dist/assets (if applicable):"
-          ls -al ./quiz-app/dist/assets || true # <--- Path relative to repo root
-        # REMOVE working-directory from this step.
-        # This makes the paths relative to the runner's workspace root,
-        # which is where your repo is cloned.
+          ls -al ./quiz-app/dist/assets || true
+        # No working-directory here, as paths are relative to repo root
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./quiz-app/dist # <--- Path relative to repo root
+          publish_dir: ./quiz-app/dist
           publish_branch: gh-pages
