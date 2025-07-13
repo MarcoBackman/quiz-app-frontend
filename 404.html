@@ -1,28 +1,14 @@
-<!-- quiz-app/404.html -->
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="">
+  <head>
     <meta charset="UTF-8">
+    <link rel="icon" href="/quiz-app-frontend/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page Not Found</title>
-    <script>
-        // Get the base path from the current URL
-        // e.g., for https://user.github.io/repo/some/path, base will be /repo/
-        const pathSegments = window.location.pathname.split('/');
-        const repoName = pathSegments[1]; // Assumes repo name is the first segment after domain
-        const basePath = `/${repoName}/`; // This should match your vite.config.js base
-
-        // Construct the full URL for index.html
-        const redirectUrl = window.location.origin + basePath + window.location.hash;
-
-        // Redirect after a short delay to allow search engines to see the 404
-        setTimeout(() => {
-            window.location.replace(redirectUrl);
-        }, 1000); // Redirect after 1 second
-    </script>
-</head>
-<body>
-<h1>404 - Page Not Found</h1>
-<p>Redirecting to the homepage...</p>
-</body>
+    <title>Vite App</title>
+    <script type="module" crossorigin src="/quiz-app-frontend/assets/index-Cg0z5JEw.js"></script>
+    <link rel="stylesheet" crossorigin href="/quiz-app-frontend/assets/index-e4kIblZV.css">
+  </head>
+  <body>
+    <div id="app"></div>
+  </body>
 </html>
